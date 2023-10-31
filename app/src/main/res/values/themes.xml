@@ -1,0 +1,14 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.StatusAppBySyahrul" parent="Theme.Material3.DayNight">
+        <item name="colorPrimary">@color/mid_grey</item>
+        <item name="colorPrimaryVariant">@color/orange_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <item name="colorSecondary">@color/black</item>
+        <item name="colorSecondaryVariant">@color/blue_any</item>
+        <item name="colorOnSecondary">@color/yellow</item>
+    </style>
+
+    <style name="Theme.StatusAppBySyahrul" parent="Base.Theme.StatusAppBySyahrul" />
+</resources>

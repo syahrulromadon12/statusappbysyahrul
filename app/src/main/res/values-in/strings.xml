@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">StatusAppBySyahrul</string>
+    <string name="signup">Daftar</string>
+    <string name="login">Masuk</string>
+    <string name="title_signup_page">Lengkapi data dirimu di bawah ini ya</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="message_login_page">masukan email dan password untuk login:)</string>
+    <string name="title_login_page">Selamat datang si Status App By Syahrul</string>
+    <string name="name">Nama</string>
+    <string name="greeting">Hallo %1$s,</string>
+    <string name="logout">Keluar</string>
+    <string name="tvLinkSignup">Belum punya akun? </string>
+    <string name="linkSignup">Klik untuk daftar</string>
+    <string name="tvDate">Dibuat pada : %s</string>
+    <string name="camera">Kamera</string>
+    <string name="gallery">Galeri</string>
+    <string name="upload">Unggah</string>
+    <string name="empty_image_warning">Silakan masukkan berkas gambar terlebih dahulu.</string>
+    <string name="desc">Description</string>
+    <string name="main">Random Story</string>
+    <string name="descNotNull">Deskripsi harus di isi</string>
+    <string name="detail_activity">Detail Status</string>
+    <string name="err_login_result">Gagal melakukan login</string>
+    <string name="err_signup_result">Gagal melakukan pendaftaran</string>
+    <string name="valid_email">Email tidak valid</string>
+    <string name="valid_password">Password minimal 8 karakter</string>
+    <string name="not_empty_form">Semua bidang harus diisi</string>
+    <string name="success_register">Akun mu telah berhasil dibuat. Yuk, buat ceritamu sekarang juga!</string>
+    <string name="next">Lanjut</string>
+    <string name="yeah">Yeah!</string>
+    <string name="language">Bahasa</string>
+    <string name="img_story">Gambar Status</string>
+    <string name="maps_nav">Maps</string>
+    <string name="title_activity_maps">Maps Activity</string>
+    <string name="retry">Try again</string>
+    <string name="loc_permission">Izinkan melacak lokasi  </string>
+    <string name="post_story">post story</string>
+</resources>
