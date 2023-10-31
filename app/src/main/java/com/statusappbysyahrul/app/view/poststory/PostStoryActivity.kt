@@ -131,69 +131,51 @@ class PostStoryActivity : AppCompatActivity() {
             Log.d("Image File", "showImage: ${imageFile.path}")
             val description = binding.descEditText.text.toString()
 
-            var lat: Float? = null
-            var lon: Float? = null
+            var lat: Float?
+            var lon: Float?
 
-            if (isLocationAllowed) {
-                if (ActivityCompat.checkSelfPermission(
-                        this,
-                        Manifest.permission.ACCESS_FINE_LOCATION
-                    ) == PackageManager.PERMISSION_GRANTED
-                ) {
-                    fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
-                        if (location != null) {
-                            val currentLat = location.latitude.toFloat()
-                            val currentLon = location.longitude.toFloat()
-                            lat = currentLat
-                            lon = currentLon
-
-                            viewModel.uploadImage(imageFile, description, lat ?: 0f, lon ?: 0f)
-                                .observe(this) { result ->
-                                    when (result) {
-                                        is ResultState.Loading -> {
-                                            showLoading(true)
-                                        }
-
-                                        is ResultState.Success -> {
-                                            result.data.message?.let { showToast(it) }
-                                            showLoading(false)
-                                            val intent = Intent(this, MainActivity::class.java)
-                                            intent.flags =
-                                                Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                                            startActivity(intent)
-                                        }
-
-                                        is ResultState.Error -> {
-                                            showToast(result.error)
-                                            showLoading(false)
-                                        }
-
-                                        else -> {
-                                        }
-                                    }
-                                }
-                        }
-                    }
-                }
+            if (!isLocationAllowed) {
+                showToast("Location permission is required to upload the image.")
+                return
             }
 
-            viewModel.uploadImage(imageFile, description, lat ?: 0f, lon ?: 0f).observe(this) { result ->
-                when (result) {
-                    is ResultState.Loading -> {
-                        showLoading(true)
-                    }
-                    is ResultState.Success -> {
-                        result.data.message?.let { showToast(it) }
-                        showLoading(false)
-                        val intent = Intent(this, MainActivity::class.java)
-                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                        startActivity(intent)
-                    }
-                    is ResultState.Error -> {
-                        showToast(result.error)
-                        showLoading(false)
-                    }
-                    else -> {
+            if (ActivityCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ) == PackageManager.PERMISSION_GRANTED
+            ) {
+                fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
+                    if (location != null) {
+                        val currentLat = location.latitude.toFloat()
+                        val currentLon = location.longitude.toFloat()
+                        lat = currentLat
+                        lon = currentLon
+
+                        viewModel.uploadImage(imageFile, description, lat ?: 0f, lon ?: 0f)
+                            .observe(this) { result ->
+                                when (result) {
+                                    is ResultState.Loading -> {
+                                        showLoading(true)
+                                    }
+
+                                    is ResultState.Success -> {
+                                        result.data.message?.let { showToast(it) }
+                                        showLoading(false)
+                                        val intent = Intent(this, MainActivity::class.java)
+                                        intent.flags =
+                                            Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                        startActivity(intent)
+                                    }
+
+                                    is ResultState.Error -> {
+                                        showToast(result.error)
+                                        showLoading(false)
+                                    }
+
+                                    else -> {
+                                    }
+                                }
+                            }
                     }
                 }
             }
