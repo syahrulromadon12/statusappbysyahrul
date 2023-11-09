@@ -14,7 +14,6 @@ class MapsViewModel(private val repository: UserRepository) : ViewModel() {
     val stories: LiveData<List<ListStoryItem?>?> get() = _stories
 
     private val _isLoading = MutableLiveData<Boolean>()
-    val isLoading: LiveData<Boolean> = _isLoading
 
     fun getStoriesWithLocation(){
         viewModelScope.launch {

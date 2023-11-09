@@ -55,7 +55,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         getMyLocation()
         setMapStyle()
-        addManyMarker()
+        AddManyMarker()
     }
 
     private fun setMapStyle() {
@@ -91,9 +91,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-    private fun addManyMarker() {
+    private fun AddManyMarker() {
         viewModel.stories.observe(this) {
-            it?.forEach { data ->
+            it?.forEach{ data ->
                 val latLng = LatLng(data?.lat ?: 0.0, data?.lon ?: 0.0)
                 mMap.addMarker(
                     MarkerOptions()
@@ -103,7 +103,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 )
             }
         }
-        viewModel.getStoriesWithLocation()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
